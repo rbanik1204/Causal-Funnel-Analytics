@@ -1,8 +1,10 @@
-import mongoose from 'mongoose'
 import Event from '../models/event.model.js'
 import { URL } from 'node:url'
 async function handleValidateEvent(req, res, next) {
     const { session_id, event_type, page_url, coordinates } = req.body ?? {};
+    console.log("Request body:", req.body);
+    console.log("Session ID:", req.body?.session_id);
+    console.log("Session ID type:", typeof req.body?.session_id);
     const reject = (message) => {
         const err = new Error(message);
         err.success = false
@@ -70,11 +72,11 @@ async function handleStoreEvent(req, res, next) {
             })
             await eventDocument.save();
             return res.status(201).send({
-                success:true,
-                message:"event inserted successfully",
-                data:eventDocument
+                success: true,
+                message: "event inserted successfully",
+                data: eventDocument
             })
-        }catch(err){
+        } catch (err) {
             err.success = false
             next(err)
         }
