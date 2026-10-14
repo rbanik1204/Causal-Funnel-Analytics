@@ -1,9 +1,12 @@
-import { handleViewEvent } from "../controllers/event.controllers.js";
-import { handleValidateEvent } from "../controllers/event.controllers.js"
+import { handleViewSessionsCount,handleViewSessionEvents } from "../controllers/session.controllers.js";
+import { handleValidateEvent, handleStoreEvent } from "../controllers/event.controllers.js";
+import { handleGetPageClicks } from "../controllers/heatmap.controllers.js";
 import express from "express";
-const router = express.Router()
+const router = express.Router();
 
 router
-    .post('/events',handleValidateEvent,handleViewEvent)
-
+    .get('/sessions/:session_id/events',handleViewSessionEvents)
+    .get('/heatmap',handleGetPageClicks)
+    .get('/sessions',handleViewSessionsCount)
+    .post('/events',handleValidateEvent,handleStoreEvent);
 export { router }
