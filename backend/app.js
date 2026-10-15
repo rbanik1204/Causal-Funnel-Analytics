@@ -36,7 +36,7 @@ app.set('view engine','ejs')
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  "https://causal-funnel-analytics-pcff6598e-ratul-baniks-projects.vercel.app",
+  "https://causal-funnel-analytics-kyr76hxfv-ratul-baniks-projects.vercel.app",
    process.env.FRONTEND_URL,
 ].filter(Boolean);
 
