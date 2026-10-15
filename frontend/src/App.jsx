@@ -1,9 +1,11 @@
 import { Navbar } from "./components/Navbar"
 import { Header } from "./components/Header"
 import { Sessions } from "./pages/Sessions"
+import { SessionEvents } from "./pages/SessionEvents"
 import { Heatmap } from "./pages/Heatmap"
 import { Routes, Route } from "react-router"
 import { Landing } from "./pages/Landing"
+
 function App() {
   return (
     <div className="flex w-screen min-h-screen bg-black overflow-hidden">
@@ -12,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/sessions" element={<Sessions />} />
+          <Route path="/sessions/:session_id/events" element={<SessionEvents/>}/>
           <Route path="/heatmap" element={<Heatmap />} />
         </Routes>
       </main>

@@ -59,7 +59,7 @@ export function Sessions() {
             <div className="bg-slate-700 rounded-lg px-6 py-4 flex items-center justify-between">
                 <span className="text-slate-300 font-semibold text-lg">Total Sessions</span>
                 <span className="text-sky-400 font-extrabold text-4xl">
-                    {loading ? "…" : sessions.length}
+                    {loading ? "…" :new Set(sessions.map((s) => s._id.session_id)).size}
                 </span>
             </div>
 
@@ -76,24 +76,20 @@ export function Sessions() {
                         <p className="text-slate-200">No sessions yet.</p>
                     )}
                     {sessions.map((s) => (
-
+                        
                         <div
-                            key={s._id}
+                            key={`${s._id.session_id}-${s._id.event_type}`}
                             className="bg-slate-700 hover:bg-slate-600 transition-colors rounded-lg px-4 py-3 flex items-center justify-between"
                         >
                             <div className="flex flex-col min-w-0">
                                 <span className="text-slate-400 text-xs uppercase tracking-wide">Session ID</span>
-                                <span className="text-white font-mono text-sm truncate">{s._id}</span>
+                                <span className="text-white font-mono text-sm truncate">{s._id.session_id}</span>
                             </div>
-                            {/* <div className="flex flex-col min-w-0">
-                                <button onClick={(sessionID) => {
-                                    sessionID = s._id
-                                    console.log(sessionID)
-                                    setSessionID(sessionID);
-                                }}>
-                                    Click me!
-                                </button>
-                            </div> */}
+                            
+                            <div className="flex flex-col items-center ">
+                                <span className="text-slate-400 text-xs uppercase tracking-wide">Event Type</span>
+                                <span className="text-blue-400 font-bold text-lg">{s._id.event_type}</span>
+                            </div>
 
                             <div className="flex flex-col items-end shrink-0 pl-4">
                                 <span className="text-slate-400 text-xs uppercase tracking-wide">Events</span>

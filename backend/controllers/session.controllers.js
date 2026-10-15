@@ -1,12 +1,11 @@
 import Event from '../models/event.model.js'
 
-export async function handleViewSessionsCount(req, res) {
+export async function handleViewSessionsCount(req, res, next) {
     try {
         const sessions = await Event.aggregate([
             {
                 $group: {
-                    _id: "$session_id",
-                    
+                    _id: {session_id:"$session_id", event_type:"$event_type"},
                     total_events: { $sum: 1 }
                 }
             }
