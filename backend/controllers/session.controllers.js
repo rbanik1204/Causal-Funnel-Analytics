@@ -6,6 +6,7 @@ export async function handleViewSessionsCount(req, res) {
             {
                 $group: {
                     _id: "$session_id",
+                    event_type:"$event_type",
                     total_events: { $sum: 1 }
                 }
             }
@@ -14,7 +15,7 @@ export async function handleViewSessionsCount(req, res) {
             success: true,
             message: "No Content"
         })
-        return res.status(204).json({
+        return res.status(200).json({
             success: true,
             data: sessions
         })

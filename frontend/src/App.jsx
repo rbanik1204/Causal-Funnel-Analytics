@@ -1,6 +1,22 @@
-
+import { Navbar } from "./components/Navbar"
+import { Header } from "./components/Header"
+import { Sessions } from "./pages/Sessions"
+import { Heatmap } from "./pages/Heatmap"
+import { Routes, Route } from "react-router"
+import { Landing } from "./pages/Landing"
 function App() {
-  return <h1 className='bg-red-500'>Hello</h1>
+  return (
+    <div className="flex w-screen min-h-screen bg-black overflow-hidden">
+      <Navbar />
+      <main className="flex-1 flex justify-center items-center">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/sessions" element={<Sessions />} />
+          <Route path="/heatmap" element={<Heatmap />} />
+        </Routes>
+      </main>
+    </div>
+  );
 }
 
 export default App

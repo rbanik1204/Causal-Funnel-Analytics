@@ -71,6 +71,9 @@ async function handleStoreEvent(req, res, next) {
                 ...(timestamp && { timestamp })
             })
             await eventDocument.save();
+            console.log("Saved event ID:", eventDocument._id);
+            console.log("Database:", Event.db.name);
+            console.log("Collection:", Event.collection.name);
             return res.status(201).send({
                 success: true,
                 message: "event inserted successfully",

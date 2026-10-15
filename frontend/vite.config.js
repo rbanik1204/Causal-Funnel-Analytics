@@ -13,7 +13,7 @@ export default defineConfig({
       "/api":{
         target:"http://[::1]:3000",
         changeOrigin:true
-      }
-    }
+      },
+    },
   },
 })

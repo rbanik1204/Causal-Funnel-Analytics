@@ -1,4 +1,4 @@
-const API_URL = 'http://[::1]:3000/api/events';
+const API_URL = 'http://127.0.0.1:3000/api/events';
 const SESSION_KEY = "causalfunnel_session_id";
 function getSessionID() {
     let sessionID = sessionStorage.getItem(SESSION_KEY);
