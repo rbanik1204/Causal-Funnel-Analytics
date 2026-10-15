@@ -33,12 +33,19 @@ app.set("views",path.join(__dirname,'./views'))//or use .resolve(__dirname,'view
 app.set('view engine','ejs')
 
 //CORS
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    process.env.FRONTEND_URL,
-  ],
-}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://causal-funnel-analytics-pcff6598e-ratul-baniks-projects.vercel.app",
+   process.env.FRONTEND_URL,
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 //Routes
 
 app.use('/api',eventRouter)
